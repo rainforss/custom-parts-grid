@@ -240,7 +240,44 @@ const LookupInput: React.FunctionComponent<ILookupInputProps> = React.memo(
     };
 
     const removeFilter = (filterName: string) => {
-      setFilters((prev) => ({ ...prev, [filterName]: "" }));
+      switch (filterName) {
+        case "wc_category1":
+          return setFilters((prev) => ({
+            wc_category1: "",
+            wc_category2: "",
+            wc_category3: "",
+            wc_category4: "",
+            wc_category5: "",
+          }));
+        case "wc_category2":
+          return setFilters((prev) => ({
+            ...prev,
+            wc_category2: "",
+            wc_category3: "",
+            wc_category4: "",
+            wc_category5: "",
+          }));
+        case "wc_category3":
+          return setFilters((prev) => ({
+            ...prev,
+            wc_category3: "",
+            wc_category4: "",
+            wc_category5: "",
+          }));
+        case "wc_category4":
+          return setFilters((prev) => ({
+            ...prev,
+            wc_category4: "",
+            wc_category5: "",
+          }));
+        case "wc_category5":
+          return setFilters((prev) => ({
+            ...prev,
+            wc_category5: "",
+          }));
+        default:
+          return setFilters((prev) => ({ ...prev, [filterName]: "" }));
+      }
     };
 
     React.useEffect(() => {
@@ -306,7 +343,24 @@ const LookupInput: React.FunctionComponent<ILookupInputProps> = React.memo(
                     }));
                   }}
                 />
-                <strong>{selectedItem.quantity}</strong>
+                <TextField
+                  ariaLabel="Quantity"
+                  id="quantity"
+                  name="quantity"
+                  type="number"
+                  min={0}
+                  max={9999}
+                  step={1}
+                  value={selectedItem.quantity}
+                  required
+                  onChange={(e) => {
+                    // console.log(e.currentTarget.value);
+                    setSelectedItem((prev: any) => ({
+                      ...prev,
+                      quantity: parseInt((e.target as any).value),
+                    }));
+                  }}
+                />
                 <IconButton
                   iconProps={{ iconName: "Add" }}
                   onClick={() => {

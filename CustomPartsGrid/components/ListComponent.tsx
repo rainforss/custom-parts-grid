@@ -40,10 +40,10 @@ const ListComponent: React.FunctionComponent<IListComponentProps> = ({
         >
           <div className="betach__item-header">
             <strong>{i.productnumber}</strong>
-            <strong>
-              ${i.price} / {i["uom.name"]}
-            </strong>
           </div>
+          <strong>
+            ${i.price} / {i["uom.name"]}
+          </strong>
           <p>{i.name}</p>
         </div>
       ))}

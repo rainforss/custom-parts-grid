@@ -89,22 +89,24 @@ const FilterComponent: React.FunctionComponent<IFilterComponentProps> = ({
                   </div>
                 ))}
               {!filters["wc_category2"] &&
-                filters["wc_category1"] &&
-                filterCriterias.wc_category1["wc_category1"].map((k) => (
-                  <div key={k} className="betach__active-filter">
-                    <DefaultButton
-                      text={k}
-                      style={{
-                        height: "30px",
-                        width: "100%",
-                        fontSize: "0.8rem",
-                      }}
-                      onClick={() => addFilter("wc_category2", k)}
-                    />
-                  </div>
-                ))}
+                !!filters["wc_category1"] &&
+                filterCriterias.wc_category1[filters["wc_category1"]].map(
+                  (k) => (
+                    <div key={k} className="betach__active-filter">
+                      <DefaultButton
+                        text={k}
+                        style={{
+                          height: "30px",
+                          width: "100%",
+                          fontSize: "0.8rem",
+                        }}
+                        onClick={() => addFilter("wc_category2", k)}
+                      />
+                    </div>
+                  )
+                )}
               {!filters["wc_category3"] &&
-                filters["wc_category2"] &&
+                !!filters["wc_category2"] &&
                 filterCriterias.wc_category2[filters["wc_category2"]].map(
                   (k) => (
                     <div key={k} className="betach__active-filter">
@@ -121,7 +123,7 @@ const FilterComponent: React.FunctionComponent<IFilterComponentProps> = ({
                   )
                 )}
               {!filters["wc_category4"] &&
-                filters["wc_category3"] &&
+                !!filters["wc_category3"] &&
                 filterCriterias.wc_category3[filters["wc_category3"]].map(
                   (k) => (
                     <div key={k} className="betach__active-filter">
@@ -138,7 +140,7 @@ const FilterComponent: React.FunctionComponent<IFilterComponentProps> = ({
                   )
                 )}
               {!filters["wc_category5"] &&
-                filters["wc_category4"] &&
+                !!filters["wc_category4"] &&
                 filterCriterias.wc_category4[filters["wc_category4"]].map(
                   (k) => (
                     <div key={k} className="betach__active-filter">
